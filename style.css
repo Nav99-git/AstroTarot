@@ -1,30 +1,70 @@
 body {
-    font-family: sans-serif;
-    background: linear-gradient(to right, #1c1c3c, #512b58);
-    color: white;
-    text-align: center;
-    padding-top: 100px;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #004d40, #00796b);
+    color: #fbe9e7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
     margin: 0;
   }
   
   h1 {
-    font-size: 3em;
-    margin-bottom: 0.3em;
-  }
-  
-  p {
-    font-size: 1.2em;
-    margin-bottom: 2em;
+    font-family: 'Unica One', cursive;
+    font-size: 3rem;
+    color: #f48fb1; /* blush pink */
+    margin-bottom: 1rem;
   }
   
   button {
-    background-color: #ff9800;
-    color: white;
-    padding: 15px 25px;
+    background-color: #f48fb1;
+    color: #004d40;
     border: none;
-    border-radius: 10px;
-    margin: 10px;
-    font-size: 1em;
+    padding: 1rem 3rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 40px;
     cursor: pointer;
+    box-shadow: 0 6px 15px rgba(244, 143, 177, 0.7);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 3rem;
+  }
+  
+  button:hover {
+    background-color: #d66d87;
+    box-shadow: 0 8px 20px rgba(214, 109, 135, 0.85);
+  }
+  
+  .card-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+  
+  .tarot-card {
+    width: 180px;
+    height: 300px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(244, 143, 177, 0.5);
+    background-color: #00695c;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    cursor: pointer;
+  }
+  
+  .tarot-card.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .tarot-card:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 12px 25px rgba(244, 143, 177, 0.8);
+    transition: transform 0.3s ease;
   }
   
