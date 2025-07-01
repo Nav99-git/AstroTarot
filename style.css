@@ -1,0 +1,30 @@
+body {
+    font-family: sans-serif;
+    background: linear-gradient(to right, #1c1c3c, #512b58);
+    color: white;
+    text-align: center;
+    padding-top: 100px;
+    margin: 0;
+  }
+  
+  h1 {
+    font-size: 3em;
+    margin-bottom: 0.3em;
+  }
+  
+  p {
+    font-size: 1.2em;
+    margin-bottom: 2em;
+  }
+  
+  button {
+    background-color: #ff9800;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
