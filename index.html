@@ -2,20 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LUNA - AstroTarot</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Unica+One&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUNA – AstroTarot</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Lottie Player -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  
+
 </head>
 <body>
 
-  <h1>LUNA - AstroTarot</h1>
-  <button id="draw-btn">Draw 3 Cards</button>
+  
+  <!-- Header -->
+  <header class="site-header">
+    <nav>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#zodiac">Zodiac</a></li>
+        <li><a href="#tarot">Tarot</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <div class="card-container" id="card-container">
-    <!-- Cards will appear here -->
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+
+    <!-- Galaxy Animation Background -->
+    <div class="galaxy-animation">
+      <lottie-player
+        src="animations/galaxy.json"
+        background="transparent"
+        speed="0.8"
+        loop
+        autoplay>
+      </lottie-player>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <div class="hero-title-group">
+        <img src="images/moon-svgrepo-com.svg" alt="Moon Icon" class="moon-icon" />
+        <h1 class="hero-title">LUNA</h1>
+      </div>
+      <p class="hero-subtext">Astrology. Tarot. You.</p>
+      <a href="#about" class="hero-btn">✨ Begin Your Journey</a>
+      <div class="scroll-arrow"></div>
+    </div>
+   
+    <section id="ritual-steps" class="ritual-steps-compact">
+  <h2 class="section-title">LUNA Ritual Steps</h2>
+  <div class="steps-list">
+    <div class="step">
+      <img src="images/candle-svgrepo-com.svg" alt="Candle Icon" class="step-icon" />
+      <div class="step-text">
+        <div class="step-title">Light a Candle</div>
+     
+      </div>
+    </div>
+    <div class="step">
+      <img src="images/tarot-card-2-svgrepo-com.svg" alt="Tarot Card Icon" class="step-icon" />
+      <div class="step-text">
+        <div class="step-title">Focus on Your Tarot Card</div>
+  
+      </div>
+    </div>
+    <div class="step">
+      <img src="images/crystal-ball-svgrepo-com.svg" alt="Moonstone Icon" class="step-icon" />
+      <div class="step-text">
+        <div class="step-title">Connect with Your Moonstone</div>
+
+      </div>
+    </div>
+    <div class="step">
+      <img src="images/herb-svgrepo-com.svg" alt="Herb Icon" class="step-icon" />
+      <div class="step-text">
+        <div class="step-title">Breathe and Heal</div>
+
+      </div>
+    </div>
   </div>
+</section>
 
-  <script src="script.js"></script>
+   
+
+  </section>
+   <!-- Add this where you want the tarot draw section -->
+<section id="tarot" class="draw-section">
+  <h2 class="section-title">The Draw</h2>
+  <p class="section-subtext">Receive your tarot card of the moment.</p>
+  <button id="draw-btn">Draw 3 Cards</button>
+  <div class="card-container" id="card-container">
+    <!-- Cards will be dynamically inserted here -->
+  </div>
+</section>
+<script src="script.js"></script>
 </body>
 </html>

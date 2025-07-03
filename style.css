@@ -1,70 +1,359 @@
+/* GENERAL RESETS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #004d40, #00796b);
-    color: #fbe9e7;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 2rem;
-    margin: 0;
+  font-family: 'Cinzel Decorative', serif;
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.4); /* translucent */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.site-header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.site-header nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.site-header nav a:hover {
+  color: #ccc;
+}
+
+/* HERO SECTION */
+.hero-section {
+  position: relative;
+  height: calc(100vh - 60px);
+  padding-top: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  padding-left: 10vw;
+  overflow: hidden;
+}
+
+/* Galaxy background animation */
+.galaxy-animation {
+  position: absolute;
+  top: 0;
+  left: -40vw; /* 👈 Shifts the animation left */
+  width: 150vw;
+  height: 150vh;
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+.galaxy-animation lottie-player {
+  width: 100%;
+  height: 100%;
+}
+
+/* HERO CONTENT */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Title + Moon Icon */
+.hero-title-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.moon-icon {
+  width: 40px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+/* LUNA Title with glow */
+.hero-title {
+  font-size: 6rem;
+  letter-spacing: 0.3rem;
+  color: white;
+  position: relative;
+  z-index: 3;
+}
+
+.hero-title::before {
+  content: "LUNA";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10rem;
+  color: rgba(255, 255, 255, 0.05);
+  filter: blur(10px);
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Subtext */
+.hero-subtext {
+  font-size: 1.5rem;
+  color: white;
+  z-index: 3;
+}
+
+/* CTA Button */
+.hero-btn {
+  background: white;
+  color: black;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 3;
+  transition: background 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: #ddd;
+}
+
+/* Scroll Arrow */
+.scroll-arrow {
+  margin-top: 40px;
+  width: 24px;
+  height: 24px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(-45deg);
+  animation: bounce 2s infinite;
+  z-index: 3;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: rotate(-45deg) translateY(0); }
+  50% { transform: rotate(-45deg) translateY(10px); }
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3.5rem;
   }
-  
-  h1 {
-    font-family: 'Unica One', cursive;
-    font-size: 3rem;
-    color: #f48fb1; /* blush pink */
-    margin-bottom: 1rem;
+
+  .hero-title::before {
+    font-size: 7rem;
   }
-  
-  button {
-    background-color: #f48fb1;
-    color: #004d40;
-    border: none;
-    padding: 1rem 3rem;
-    font-size: 1.25rem;
-    font-weight: 600;
-    border-radius: 40px;
-    cursor: pointer;
-    box-shadow: 0 6px 15px rgba(244, 143, 177, 0.7);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 3rem;
+
+  .hero-subtext {
+    font-size: 1.2rem;
   }
-  
-  button:hover {
-    background-color: #d66d87;
-    box-shadow: 0 8px 20px rgba(214, 109, 135, 0.85);
+
+  .moon-icon {
+    width: 28px;
   }
-  
-  .card-container {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    flex-wrap: nowrap;
+
+  .hero-btn {
+    font-size: 1rem;
+    padding: 10px 24px;
   }
-  
-  .tarot-card {
-    width: 180px;
-    height: 300px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(244, 143, 177, 0.5);
-    background-color: #00695c;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    cursor: pointer;
+
+  .site-header nav ul {
+    gap: 16px;
   }
-  
-  .tarot-card.show {
-    opacity: 1;
-    transform: scale(1);
-  }
-  
-  .tarot-card:hover {
-    transform: scale(1.05) rotate(2deg);
-    box-shadow: 0 12px 25px rgba(244, 143, 177, 0.8);
-    transition: transform 0.3s ease;
-  }
-  
+}
+.ritual-steps-compact {
+  max-width: 300px;
+  margin: 60px auto;
+  padding: 20px;
+  color: white;
+  font-family: 'Cinzel Decorative', serif;
+  position: relative;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  letter-spacing: 0.2rem;
+  text-align: center;
+}
+
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 60px; /* space between icons */
+  position: relative;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.step-icon {
+  width: 50px;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.step:hover .step-icon {
+  transform: scale(1.3);
+}
+
+.step-text {
+  position: absolute;
+  left: 70px;
+  top: 50%;
+  transform: translateX(-100%) translateY(-50%);
+  background: rgba(255 255 255 / 0.1);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 15px;
+  max-width: 400px;
+  white-space: normal;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  user-select: none;
+  box-shadow: 0 0 15px rgba(255 255 255, 0.15);
+}
+
+.step:hover .step-text {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(10px) translateY(-50%);
+}
+
+.step-title {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+.step-message {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+/* Draw Section Styling */
+.draw-section {
+  background-color: black; /* Off-white / skin color */
+  max-width: 1200px;
+  width: 90vw;
+  margin: 3rem auto; /* Center with vertical spacing */
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  color: #3a2f2b; /* Darker text for contrast */
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.draw-section .section-title {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.draw-section .section-subtext {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #5a514b;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  /* Keep the size of the card container fluid but limited */
+  max-width: 100%;
+  overflow-x: auto; /* Allow horizontal scroll if needed on small screens */
+  padding-bottom: 1rem;
+}
+
+.draw-section button#draw-btn {
+  background-color: #b86b4b;
+  color: #f5ebe0;
+  border: none;
+  padding: 1rem 3rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 40px;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(184, 107, 75, 0.8);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 3rem;
+}
+
+.draw-section button#draw-btn:hover {
+  background-color: #a0583c;
+  box-shadow: 0 8px 20px rgba(160, 88, 60, 0.9);
+}
+
+/* Card container and cards — keep your existing styles but with updated colors */
+.draw-section .card-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: nowrap;
+}
+
+/* Tarot card styling */
+.draw-section .tarot-card {
+  width: 180px;
+  height: 315px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(184, 107, 75, 0.5);
+  background-color: #cbb9a5; /* light warm beige */
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  cursor: pointer;
+}
+
+.draw-section .tarot-card.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.draw-section .tarot-card:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 12px 25px rgba(184, 107, 75, 0.8);
+  transition: transform 0.3s ease;
+}
+

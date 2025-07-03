@@ -1,39 +1,34 @@
 const majorArcana = [
-    "fool", "magician", "highpriestess", "empress", "emperor",
-    "hierophant", "lovers", "chariot", "strength", "hermit",
-    "wheelofortune", "justice", "hangedman", "death", "temperance",
-    "devil", "tower", "star", "moon", "sun", "judgement", "world"
-  ];
-  
-  const cardContainer = document.getElementById("card-container");
-  const drawBtn = document.getElementById("draw-btn");
-  
-  function getRandomCards(num = 3) {
-    const selected = new Set();
-    while (selected.size < num) {
-      const randIndex = Math.floor(Math.random() * majorArcana.length);
-      selected.add(majorArcana[randIndex]);
-    }
-    return Array.from(selected);
+  "fool", "magician", "highpriestess", "empress", "emperor",
+  "hierophant", "lovers", "chariot", "strength", "hermit",
+  "wheeloffortune", "justice", "hangedman", "death", "temperance",
+  "devil", "tower", "star", "moon", "sun", "judgement", "world"
+];
+
+const drawBtn = document.getElementById("draw-btn");
+const cardContainer = document.getElementById("card-container");
+
+drawBtn.addEventListener("click", () => {
+  cardContainer.innerHTML = ""; // Clear previous cards
+
+  const pickedIndices = new Set();
+  while (pickedIndices.size < 3) {
+    pickedIndices.add(Math.floor(Math.random() * majorArcana.length));
   }
-  
-  function drawCards() {
-    cardContainer.innerHTML = ''; // Clear previous cards
-  
-    const cards = getRandomCards(3);
-    cards.forEach((cardName, index) => {
-      const cardDiv = document.createElement('div');
-      cardDiv.classList.add('tarot-card');
-      // Use relative path and lowercase file names
-      cardDiv.style.backgroundImage = `url('images/${cardName.toLowerCase()}.jpg')`;
-      cardContainer.appendChild(cardDiv);
-  
-      // Staggered animation delay
-      setTimeout(() => {
-        cardDiv.classList.add('show');
-      }, 200 * index);
-    });
-  }
-  
-  drawBtn.addEventListener('click', drawCards);
-  
+
+  pickedIndices.forEach((index, i) => {
+    const cardName = majorArcana[index];
+    const cardDiv = document.createElement("div");
+    cardDiv.classList.add("tarot-card");
+
+    // Delay show for nice pop-out animation
+    setTimeout(() => {
+      cardDiv.classList.add("show");
+    }, i * 300);
+
+    cardDiv.style.backgroundImage = `url('images/${cardName}.jpg')`;
+    cardDiv.title = cardName.replace(/_/g, ' ').toUpperCase();
+
+    cardContainer.appendChild(cardDiv);
+  });
+});
