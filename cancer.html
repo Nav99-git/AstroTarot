@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cancer – Zodiac Profile | LUNA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+   body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: #0b0c1a;
+  color: white;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.astro-layers {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.layer {
+  position: absolute;
+  max-width: none;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0.5;
+  animation: float 20s infinite ease-in-out;
+}
+
+.stars {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.glow {
+  bottom: 0;
+  right: 0;
+  width: 40vw;
+  opacity: 0.6;
+  filter: blur(50px);
+  z-index: 3;
+}
+
+/* Subtle floating effect */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+
+
+    .video-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.3;
+    }
+
+    .aries-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem 4rem;
+      text-shadow: 0 0 8px rgba(255, 69, 0, 0.8);
+    }
+
+    .aries-symbol {
+      width: 100px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #ff4500);
+      flex-shrink: 0;
+    }
+
+    .aries-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .aries-dates {
+      font-weight: 500;
+      font-size: 1.2rem;
+      opacity: 0.8;
+      margin: 0 0 0.5rem 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .aries-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      margin: 0;
+      color: #ff6f3c;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      user-select: none;
+      text-shadow: 0 0 20px #ff6f3c, 0 0 40px #ff4500;
+    }
+
+    /* Main content layout */
+    .main-content {
+      display: flex;
+      gap: 2rem;
+      padding: 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto 4rem auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Left box - horoscope points */
+    .left-box {
+      flex: 1 1 400px;
+      background: linear-gradient(135deg, #957DAD, #66C7C8);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(102, 199, 200, 0.7);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      user-select: text;
+      min-width: 320px;
+    }
+
+    .left-box h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: white;
+      user-select: none;
+    }
+
+    .left-box ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .left-box li {
+      position: relative;
+      padding-left: 1.6rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.125rem;
+      line-height: 1.4;
+      opacity: 0.95;
+      cursor: default;
+      user-select: text;
+    }
+
+    /* Pink star bullet using ::before */
+    .left-box li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #f7b2d9;
+      font-size: 1.3rem;
+      line-height: 1;
+      user-select: none;
+    }
+
+    /* Right box - Spotify + Description + Tarot */
+    .right-box {
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      min-width: 320px;
+    }
+
+    /* Spotify embed container */
+    .spotify-box {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1.5rem;
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+      color: white;
+      font-family: 'Cinzel Decorative', serif;
+      user-select: none;
+    }
+
+    .spotify-box h3 {
+      margin: 0 0 1rem 0;
+      font-size: 1.8rem;
+      color: #ff6f3c;
+      text-shadow: 0 0 10px #ff6f3c;
+    }
+
+    .spotify-box iframe {
+      border-radius: 12px;
+      width: 100%;
+      height: 352px;
+      border: none;
+      box-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
+      user-select: none;
+    }
+
+    /* Description and Tarot sections */
+    .info-box {
+      background: rgba(255, 69, 0, 0.12);
+      padding: 1.8rem 2rem;
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      user-select: text;
+    }
+
+    .info-box h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: #ff6f3c;
+      text-shadow: 0 0 10px #ff6f3c;
+      user-select: none;
+    }
+
+    .info-box p {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .main-content {
+        flex-direction: column;
+        padding: 2rem;
+      }
+
+      .left-box, .right-box {
+        min-width: auto;
+        width: 100%;
+      }
+
+      .aries-header {
+        padding: 2rem;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔮 Background Video 
+  <video autoplay muted loop playsinline class="video-bg">
+    <source src="animations/space.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>-->
+  <div class="astro-layers">
+  <img src="images/bg1.webp" class="layer stars" alt="bg1" />
+  <img src="images/bg3.webp" class="layer glow" alt="bg3" />
+ 
+</div>
+
+
+  <!-- ♈ Aries Header -->
+  <div class="aries-header">
+    <img src="zodiac/cancer-svgrepo-com.svg" alt="Aries Symbol" class="aries-symbol" />
+    <div class="aries-title">
+      <p class="aries-dates">Jun 21 – Jul 22</p>
+      <h1 class="aries-name">Cancer</h1>
+    </div>
+  </div>
+
+  <!-- Main Content: Left and Right columns -->
+  <div class="main-content">
+
+    <!-- Left: Horoscope info -->
+    <section class="left-box" aria-label="Aries Horoscope Details">
+      <h2>Cancer Horoscope Will Guide You Through:</h2>
+<ul>
+  <li>Emotional balance and self-care in July</li>
+  <li>Family ties and healing past patterns</li>
+  <li>Inner intuition vs. external expectations</li>
+  <li>How the Full Moon stirs your heart</li>
+  <li>Creative flow and home-centered clarity</li>
+  <li>Romantic depth and emotional bonding</li>
+  <li>What Cancer must let go of emotionally</li>
+  <li>Tarot Reading Tailored for Cancer</li>
+</ul>
+    </section>
+
+    <!-- Right: Spotify + Description + Tarot -->
+    <aside class="right-box">
+
+      <div class="spotify-box" aria-label="Spotify Music for Aries">
+        <h3>Sound of Cancer</h3>
+       <iframe style="border-radius:12px" 
+        src="https://open.spotify.com/embed/track/7hDVYcQq6MxkdJGweuCtl9?utm_source=generator"" 
+       allowfullscreen 
+       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+       loading="lazy"
+       title="Spotify track: Sound of Cancer"
+       ></iframe>
+      </div>
+
+      <section class="info-box" aria-label="About Aries Description">
+        <h2>About Cancer</h2>
+        <p> 
+  Cancer is a water sign deeply connected to emotions, intuition, and nurturing energy. Protective and empathetic, Cancers seek emotional safety and meaningful connections. With their strong inner world and loyalty, they are the heart of every soul circle.
+</p>
+      </section>
+
+      <section class="info-box" aria-label="Tarot of the Day for Aries">
+        <h2>Tarot of the Day</h2>
+<p>
+  Today’s card for Cancer is <strong>The Moon</strong>. Trust your intuition, even when the path ahead feels unclear. Emotions may rise — allow them to guide you, not overwhelm you. Hidden truths are surfacing.
+</p>
+
+      </section>
+
+    </aside>
+
+  </div>
+
+</body>
+</html>

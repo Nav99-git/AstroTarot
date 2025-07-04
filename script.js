@@ -32,3 +32,4 @@ drawBtn.addEventListener("click", () => {
     cardContainer.appendChild(cardDiv);
   });
 });
+
